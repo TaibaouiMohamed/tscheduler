@@ -33,12 +33,31 @@ First we install the package from pypi.org
     pip install tscheduler
 Second we call BackgroundScheduler from the package tscheduler
     from tscheduler.tscheduler import BackgroundScheduler
-Python Example:
+Python Example 1:
     from tscheduler.tscheduler import BackgroundScheduler
 
-    def helio():
+    def hello():
         print("hello")
 
     scheduler = BackgroundScheduler()
-    scheduler.add_job(target=helio,trigger="interval",seconds=5)
+    scheduler.add_job(target=hello,trigger="interval",seconds=5) # line 1
+    scheduler.add_job(target=hello,seconds=5) # line 2  line 1 same result with line 2
     scheduler.start()
+    
+This example shows the use of the interval
+
+Python Example 2:
+    from tscheduler.tscheduler import BackgroundScheduler
+
+    def hello():
+        print("hello")
+
+    scheduler = BackgroundScheduler()
+    scheduler.add_job(target=hello,trigger="cron",hours=10,minutes=30,seconds=0) # line 1
+    scheduler.add_job(target=hello,trigger="cron",day_of_week="mon-tue-wed-thu-fri-sat-sun",hours=10,minutes=30,seconds=0) # line 2   line 1 same result with line 2
+                                                                                                                           # day_of_week: With this property you can specify the days on which the job works.
+    scheduler.start()
+
+This example shows the use of the cron
+
+Python Example 3: this example using fastapi
