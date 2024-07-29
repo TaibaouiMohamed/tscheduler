@@ -102,5 +102,5 @@ Example:
     def print_name():
         hello(name)
     scheduler = BackgroundScheduler()
-    scheduler.add_job(target=print_name,trigger="interval",seconds=5) # line 1
+    scheduler.add_job(target=print_name,trigger="interval",seconds=5)
     scheduler.start()
