@@ -28,12 +28,15 @@ There are third party solutions for integrating Tscheduler with other frameworks
     Flask
 
     Fastapi
+    
 How to use
+
 First we install the package from pypi.org
     pip install tscheduler
 Second we call BackgroundScheduler from the package tscheduler
     from tscheduler.tscheduler import BackgroundScheduler
 Python Example 1:
+
     from tscheduler.tscheduler import BackgroundScheduler
 
     def hello():
@@ -47,6 +50,7 @@ Python Example 1:
 This example shows the use of the interval
 
 Python Example 2:
+
     from tscheduler.tscheduler import BackgroundScheduler
 
     def hello():
