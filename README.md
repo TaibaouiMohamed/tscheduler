@@ -61,3 +61,44 @@ Python Example 2:
 This example shows the use of the cron
 
 Python Example 3: this example using fastapi
+    from contextlib import asynccontextmanager
+    from time import sleep
+    from fastapi import FastAPI
+    from tscheduler.tscheduler import BackgroundScheduler
+    
+    
+    @asynccontextmanager
+    async def lifespan(_: FastAPI):
+        print("app started....")
+        sch.start()
+        yield
+        print("app stopped...")
+        sch.stop()
+    
+    
+    app = FastAPI(lifespan=lifespan)
+    sch = BackgroundScheduler()
+    
+    
+    def hello():
+        print("hello")
+    
+    
+    sch.add_job(target=hello, seconds=5)
+
+Note:
+The function must not contain args
+But there is a solution for it. The function must be wrapped with a function not contain args
+Example:
+     from tscheduler.tscheduler import BackgroundScheduler
+
+    def hello(name):
+        print(f"hello {name}")
+
+    name="taibaoui mohamed"
+    
+    def print_name():
+        hello(name)
+    scheduler = BackgroundScheduler()
+    scheduler.add_job(target=print_name,trigger="interval",seconds=5) # line 1
+    scheduler.start()
