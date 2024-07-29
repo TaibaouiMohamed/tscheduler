@@ -28,3 +28,17 @@ There are third party solutions for integrating Tscheduler with other frameworks
     Flask
 
     Fastapi
+How to use
+First we install the package from pypi.org
+    pip install tscheduler
+Second we call BackgroundScheduler from the package tscheduler
+    from tscheduler.tscheduler import BackgroundScheduler
+Python Example:
+    from tscheduler.tscheduler import BackgroundScheduler
+
+    def helio():
+        print("hello")
+
+    scheduler = BackgroundScheduler()
+    scheduler.add_job(target=helio,trigger="interval",seconds=5)
+    scheduler.start()
